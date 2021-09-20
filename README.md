@@ -1,11 +1,11 @@
 # Projeto:
 
-	Este projeto foi desenvolvido em Python com a biblioteca Streamlit e trata-se de um recomendador de vídeos do Youtube, que classifica os mesmos de acordo com o interesse de visualização, baseado em 5 termos de pesquisa, a saber:
-	- Data Science
-	- Machine Learning
-	- Kaggle
-	- Streamlit
-	- Flask
+Este projeto foi desenvolvido em Python com a biblioteca Streamlit e trata-se de um recomendador de vídeos do Youtube, que classifica os mesmos de acordo com o interesse de visualização, baseado em 5 termos de pesquisa, a saber:
+- Data Science
+- Machine Learning
+- Kaggle
+- Streamlit
+- Flask
 
 # Cotela de dados:
 
