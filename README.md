@@ -1,4 +1,4 @@
-# Projeto Recomendador de Vídeos do Youtube:
+# Recomendador de Vídeos do Youtube:
 
 Este projeto foi desenvolvido em Python com a biblioteca Streamlit e trata-se de um recomendador de vídeos do Youtube, que classifica os mesmos de acordo com o interesse de visualização, baseado em 5 termos de pesquisa, a saber:
 - Data Science
@@ -15,7 +15,7 @@ Os dados foram coletados do Youtube via **Web Scraping** através da biblioteca 
 
 # Marcando as labels:
 
-Para auxiliar a marcação das labels, desenvolvi um app com o Streamlit, com os botões "Gostei" e "Não Gostei" para facilitar o processo. A ferramenta também exibia a imagem do vídeo (que ajudava na decisão em títulos que geravam dúvida). Vide imagem:
+Para auxiliar a marcação das labels, desenvolvi um app com o Streamlit, com os botões "Gostei" e "Não Gostei" para facilitar o processo. A ferramenta também exibe as imagens dos vídeos para auxiliar na decisão em títulos que geravam dúvidas. Vide imagem:
 
 ![app desenvolvido para auxiliar a marcar as labels como gostei](https://github.com/gleson/projeto-curso-mariofilho/blob/main/marcador.jpg)
 
@@ -23,7 +23,7 @@ Para reduzir a quantidade de itens selecionáveis, foram inseridos filtros, reti
 
 # Modelagem:
 
-Na modelagem, os melhores resultados foram obtidos com a **RandomForest** e **LightGBM**, e portanto, os mesmos foram selecionados para o ensemble, onde este bateu a base line de ambos os modelos, tanto na **Average Precision** como no **RocAUC**. Seguem os valores obtidos:
+Na modelagem, os melhores resultados foram obtidos com a **RandomForest** e **LightGBM**, e portanto, os mesmos foram selecionados para o **ensemble**, onde este bateu a base line de ambos os modelos, tanto na **Average Precision** como no **RocAUC**. Seguem os valores obtidos:
 
 Ainda durante o curso, o Youtube mudou a estrutura das páginas, quebrando o Web Scraping que seria usado para atualização da base. Esta atualização seria necessária para testes após a modelagem e posteriormente para o deploy. Para evitar a manutenção exaustiva (que perduraria após o deploy), decidi usar a **API do Youtube** para esta tarefa (**Youtube API v3**).
 
@@ -35,4 +35,4 @@ O App funcionou perfeitamente, como esperado, recomendando bons vídeos no iníc
 
 # Agradecimentos:
 
-Agradeço ao Mário Filho, pelo excelente curso, com conteúdos bem acima do meu conhecimento sobre ML, onde algumas aulas tive que assistir mais de uma vez para poder compreender, tendo em vista a densidade do material apresentado.
+Agradeço ao **Mário Filho**, pelo excelente curso, com conteúdos bem acima do meu conhecimento sobre ML, onde algumas aulas tive que assistir mais de uma vez para poder compreender, tendo em vista a densidade do material apresentado.
