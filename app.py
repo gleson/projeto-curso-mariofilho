@@ -109,7 +109,8 @@ expander.write("Sou Profissional de TI formado como Tecnólogo em Redes de Compu
 expander.write("Possuo habilidades com as linguagens: Python, PHP, MySQL, HTML5, CSS3, JavaScript, VBScript, Batch, VBA e tenho conhecimento em Ciência de Dados.")
 expander.write("Conheça o meu Linkedin: https://www.linkedin.com/in/gleson-cruz/")
 
-df = df[df.time_sec != 'P0D'] # Retirando as lives agendadas do DataFrame principal 
+try:
+	df = df[df.time_sec != 'P0D'] # Retirando as lives agendadas do DataFrame principal 
 df = df.astype({'views': int, 'likes': int, 'dislikes': int})
 
 

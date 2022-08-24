@@ -1,6 +1,6 @@
 # Recomendador de Vídeos do Youtube:
 
-Este projeto foi desenvolvido em Python com a biblioteca Streamlit e trata-se de um recomendador de vídeos do Youtube, que classifica os mesmos de acordo com o interesse de visualização, baseado em 5 termos de pesquisa, a saber:
+Este é um projeto de Machine Learning, desenvolvido em Python que utiliza a biblioteca Streamlit para interação com o usuário ([Clique aqui para acessar](https://recomendador-youtube.herokuapp.com/)). No projeto foi desenvolvido um recomendador de vídeos do Youtube, que classifica os mesmos de acordo com o interesse de visualização, baseado em 5 termos de pesquisa, a saber:
 - Data Science
 - Machine Learning
 - Kaggle
