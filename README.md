@@ -31,8 +31,8 @@ Enquanto desenvolvia as funções para montar o DataFrame obtido pela API, encon
 
 # Conclusão:
 
-O App funcionou perfeitamente, como esperado, recomendando bons vídeos no início. E com a inserção de alguns recursos, o mesmo proporciona ao usuário fazer algumas alterações para uma visualização diferenciada dos resultados. Bem como a atualização da base de dados com apenas um clique. Para um App completo, ainda faltaria incluir a opção de vídeos assistidos (afim de omitir os mesmos das primeiras posições) e testes A/B, para sugerir vídeos que o modelo acredita erroneamente ter pouca relevância, pelo fato do mesmo não ter capturado alguma característica importante do vídeo. Mas para um projeto inicial, o resultado atual está satisfatório ;)
+O App funcionou perfeitamente, como esperado, recomendando bons vídeos no início. E com a inserção de alguns recursos, o mesmo proporciona ao usuário fazer algumas alterações para uma visualização diferenciada dos resultados, bem como a atualização da base de dados com apenas um clique. Para um projeto inicial, o resultado foi satisfatório ;)
 
 # Agradecimentos:
 
-Agradeço ao **Mário Filho**, pelo excelente curso, com conteúdos bem acima do meu conhecimento sobre ML, onde algumas aulas tive que assistir mais de uma vez para poder compreender, tendo em vista a densidade do material apresentado.
+Agradeço ao **Mário Filho**, pelo excelente curso, com conteúdos muito ricos e densos sobre ML.

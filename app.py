@@ -21,8 +21,8 @@ qty = st.sidebar.slider('Quantidade de resultados exibidos:', 15, 80, 35)
 
 # calculando time_sec
 def calc_sec(text):
-    x = text.replace("PT","").replace("S","").replace("M"," ").replace("H"," ").split(" ")
-    return (int(x[-3])*3600 if len(x)>2 else 0) + (int(x[-2])*60  if len(x)>1 else 0) + (int(x[-1])  if x[-1]!="" else 0)
+	x = text.replace("PT","").replace("S","").replace("M"," ").replace("H"," ").split(" ")
+	return (int(x[-3])*3600 if len(x)>2 else 0) + (int(x[-2])*60  if len(x)>1 else 0) + (int(x[-1])  if x[-1]!="" else 0)
 
 
 df = pd.DataFrame()
@@ -48,42 +48,45 @@ if refresh:
 	qty_api = int(120/len(queries))
 
 	class KeyList:
-	    def __init__(self, listing):
-	        self.listing = listing
+		def __init__(self, listing):
+			self.listing = listing
 
 	klist = jb.load("klist.pkl.z")
 	youtube=build('youtube', 'v3', developerKey=("y".join(klist.listing[:3])+"W".join(klist.listing[3:6])))
 	
 	for query in queries:
-	    search = youtube.search().list(q=query, part="id,snippet", maxResults=qty_api, regionCode='BR').execute()
+		search = youtube.search().list(q=query, part="id,snippet", maxResults=qty_api, regionCode='BR').execute()
 
-	    # Obtendo os valores das features
-	    for i in range(qty_api):
-	        try:
-	            video_id = search['items'][i]['id']['videoId']
-	            response = youtube.videos().list(part='statistics, contentDetails, topicDetails', id=video_id).execute()
+		# Obtendo os valores das features
+		for i in range(qty_api):
+			try:
+				video_id = search['items'][i]['id']['videoId']
+				response = youtube.videos().list(part='statistics, contentDetails, topicDetails', id=video_id).execute()
 	
-	            df = df.append({
-	                'id': search['items'][i]['id']['videoId'],
-	                'title': search['items'][i]['snippet']['title'],
-	                'channel': search['items'][i]['snippet']['channelTitle'],
-	                'published': search['items'][i]['snippet']['publishedAt'],
-	                'query': query,
-	                'time_sec': response['items'][0]['contentDetails']['duration'],
-	                'views': response['items'][0]['statistics']['viewCount'],
-	                'likes': response['items'][0]['statistics']['likeCount'],
-	                'dislikes': 0
-	                # 'dislikes': response['items'][0]['statistics']['dislikeCount']
-	            }, ignore_index=True)
-	        except:
-	            continue
+				df = df.append({
+					'id': search['items'][i]['id']['videoId'],
+					'title': search['items'][i]['snippet']['title'],
+					'channel': search['items'][i]['snippet']['channelTitle'],
+					'published': search['items'][i]['snippet']['publishedAt'],
+					'query': query,
+					'time_sec': response['items'][0]['contentDetails']['duration'],
+					'views': response['items'][0]['statistics']['viewCount'],
+					'likes': response['items'][0]['statistics']['likeCount'],
+					'dislikes': 0
+					# 'dislikes': response['items'][0]['statistics']['dislikeCount']
+				}, ignore_index=True)
+			except:
+				continue
 
-	df.to_csv('df_api.csv', index=False)
 	df.drop_duplicates(subset=['id'], inplace=True)
+	df.to_csv('df_api.csv', index=False)
 
-	df_lives = df[df.time_sec == 'P0D']
-	if df_lives.shape[0] != 0:
-		df_lives.to_csv('df_lives.csv', index=False)
+	try:
+		df_lives = df[df.time_sec == 'P0D']
+		if df_lives.shape[0] != 0:
+			df_lives.to_csv('df_lives.csv', index=False)
+	except:
+		pass
 
 df = pd.read_csv("df_api.csv")
 
@@ -105,12 +108,15 @@ if df_lives.shape[0] != 0:
 st.sidebar.write("### Quem sou:")
 expander = st.sidebar.expander(label='Saiba mais')
 expander.write("Me chamo Gleson Cruz.")
-expander.write("Sou Profissional de TI formado como Tecnólogo em Redes de Computadores, moro em Fortaleza/CE.")
+expander.write("Sou Profissional de TI e desenvolvedor Python/Django, formado como Tecnólogo em Redes de Computadores, moro em Fortaleza/CE.")
 expander.write("Possuo habilidades com as linguagens: Python, PHP, MySQL, HTML5, CSS3, JavaScript, VBScript, Batch, VBA e tenho conhecimento em Ciência de Dados.")
 expander.write("Conheça o meu Linkedin: https://www.linkedin.com/in/gleson-cruz/")
 
 try:
 	df = df[df.time_sec != 'P0D'] # Retirando as lives agendadas do DataFrame principal 
+except:
+	pass
+
 df = df.astype({'views': int, 'likes': int, 'dislikes': int})
 
 
@@ -134,10 +140,10 @@ ohe_features = ['channel', 'query']
 
 
 #carregando modelos
-mdl_rf    = jb.load("rf.pkl.z")
+mdl_rf	= jb.load("rf.pkl.z")
 mdl_lgbm  = jb.load("lgbm.pkl.z")
 title_vec = jb.load('title_vec.pkl.z')
-ohe_ct    = jb.load("columnTransformer.pkl.z")
+ohe_ct	= jb.load("columnTransformer.pkl.z")
 
 
 # Transformando o título
